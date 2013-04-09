@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Divisor</title>
+</head>
+<!--
+======================================================================
+JavaScript Circles division
+Author: delimitry
+======================================================================
+-->
+<body onload="checkCanvasIsSupported();" oncontextmenu="return false" style="background: #000">
+<script type="text/javascript" src="js/circles_division.js"></script>
+<canvas id="game_canvas" style="border: solid 1px #000;"></canvas><br/>
+<script type="text/javascript">
+
+var canvas;
+var context;
+var nodes;
+
+function checkCanvasIsSupported() {
+	canvas = document.getElementById("game_canvas");
+	canvas.width = 640;
+	canvas.height = 480;
+	if (canvas.getContext) {
+		context = canvas.getContext('2d');
+		nodes = new TheNode(0, 0, 400, 400, getRandomRangeRGBColor(128, 256));
+
+		render();
+		setInterval(render, 1000/60);
+	} else {
+		alert("Sorry, but your browser doesn't support a canvas.");
+	}
+}
+
+document.onmousemove = function(event) {
+	nodes.update(event.pageX, event.pageY);
+}
+
+function render() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	nodes.draw(context);
+}
+
+</script>
+
+</body>
+</html>
+
