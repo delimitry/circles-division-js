@@ -47,11 +47,8 @@ function TheNode(x, y, w, h, color) {
 		// for four subnodes
 		for (var i = 0; i < 4; i++) {		
 			if (this.children[i]) {
-				var child = this.children[i];
-				while (child) {
-					child.draw(context);
-					child = child.children[i];
-				}
+				var child = this.children[i];				
+				child.draw(context);			
 			}
 		}
 	}
@@ -64,7 +61,6 @@ function TheNode(x, y, w, h, color) {
 			if (this.children[i]) {
 				var child = this.children[i];
 				child.update(mx, my);
-				child = child.children[i];	
 			}
 		}
 
