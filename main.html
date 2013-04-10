@@ -33,7 +33,9 @@ function checkCanvasIsSupported() {
 }
 
 document.onmousemove = function(event) {
-	nodes.update(event.pageX, event.pageY);
+	var posx = event.pageX - canvas.offsetLeft;
+	var posy = event.pageY - canvas.offsetTop;
+	nodes.update(posx, posy);
 }
 
 function render() {
